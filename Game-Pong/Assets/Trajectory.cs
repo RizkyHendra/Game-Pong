@@ -31,6 +31,8 @@ public class Trajectory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        bool drawBallAtCollision = false;
         // Titik tumbukan yang digeser, untuk menggambar ballAtCollision
         Vector2 offsetHitPoint = new Vector2();
         // Tentukan titik tumbukan dengan deteksi pergerakan lingkaran
@@ -90,19 +92,23 @@ public class Trajectory : MonoBehaviour
                 // Hanya gambar lintasan untuk satu titik tumbukan, jadi keluar dari loop
                 break;
 
-                // Jika true, ...
-                if (drawBallAtCollision)
-                {
-                    // Gambar bola "bayangan" di prediksi titik tumbukan
-                    ballAtCollision.transform.position = offsetHitPoint;
-                    ballAtCollision.SetActive(true);
-                }
-                else
-                {
-                    // Sembunyikan bola "bayangan"
-                    ballAtCollision.SetActive(false);
-                }
+                
             }
+
+            
+        }
+
+        // Jika true, ...
+        if (drawBallAtCollision)
+        {
+            // Gambar bola "bayangan" di prediksi titik tumbukan
+            ballAtCollision.transform.position = offsetHitPoint;
+            ballAtCollision.SetActive(true);
+        }
+        else
+        {
+            // Sembunyikan bola "bayangan"
+            ballAtCollision.SetActive(false);
         }
 
     }
